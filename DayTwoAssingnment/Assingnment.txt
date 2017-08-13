@@ -1,0 +1,16 @@
+How many boxing will occur for below code snippet?
+
+public static void Main() 
+{ 
+	Int32 v = 5; 								// Create an unboxed value type variable. 
+	Object o = v;	 							// o refers to a boxed Int32 containing 5. 
+	v = 123;	 								// Changes the unboxed value to 123 
+	Console.WriteLine(v + ", " + (Int32) o);	// Displays "123, 5" 
+} 
+
+answer:
+
+	Int32 v = 5; 					
+	Object o = v; 								//Boxing	
+	v = 123;	 								
+	Console.WriteLine(v + ", " + (Int32) o);	//UnBoxing

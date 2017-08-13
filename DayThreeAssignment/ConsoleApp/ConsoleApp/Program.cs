@@ -13,60 +13,48 @@ namespace ConsoleApp
         {
             //Assignment 1.Override the Object's ToString() method to show some info about your class.
 
-            MyDictionary<int, string> myClass= new MyDictionary<int, string>();
+            MyClass myClass= new MyClass(5,10);
             Object obj = new object();
             Console.WriteLine(myClass.ToString());
             Console.WriteLine(obj.ToString());
 
-            //Assignment 2.Demonstrate the above class for a System.Dictionary as a key and do following operations.
-            //a.Ability to add a key value
-            //b.Update value by key
+            //Assignment 2.Demonstrate the above class for A System.Dictionary as A key and do following operations.
+            //A.Ability to add A key value
+            //B.Update value by key
             //c.Delete value by using key
-            myClass.Add(1,"One");
-            myClass.Add(2,"Two");
-            myClass.Add(3,"Three");
-            myClass.Add(4,"Four");
+            Dictionary<string, MyClass> myDictionary= new Dictionary<string, MyClass>();
+            
+            MyClass myClass1 = new MyClass(5,10);
+            MyClass myClass2 = new MyClass(5,15);
 
+            myDictionary.Add("One", myClass1);
+            myDictionary.Add("Two", myClass2);
 
+            foreach (KeyValuePair<string, MyClass> kvp in myDictionary)
+            {
+                Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+            }
 
+            MyClass myClass3 = new MyClass(10, 15);
+            myDictionary["Two"] = myClass3;
+
+            Console.WriteLine("Update value by key : Key = {0}, Value = {1}", "Two", myDictionary["Two"]);
+
+            Console.WriteLine("Delete value by using key");
+
+            myDictionary.Remove("Two");
+
+            foreach (KeyValuePair<string, MyClass> kvp in myDictionary)
+            {
+                Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+            }
 
             //Assignment 3.Implement the caching mechanism for clever memory management and provide below features,
-            //a.Caching should take any type and can be retrieved by a string key.
-            //b.It should allow clearing cache by key.
+            //A.Caching should take any type and can be retrieved by A string key.
+            //B.It should allow clearing cache by key.
             //c.It should allow updating the existing caching by key.
 
             Console.ReadKey();
         }
     }
-
-    public class MyDictionary<TKey, TValue> 
-    {
-
-
-        public override string ToString()
-        {
-            return "Override the Object's ToString() for MyClass";
-        }
-
-        public void Clear()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Add(TKey key, TValue value)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Remove(TKey key)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Update(TKey key, TValue value)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
 }
