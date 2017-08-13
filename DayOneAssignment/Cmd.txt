@@ -1,0 +1,12 @@
+//Compiles MyApp.cs and creates MyApp.exe:
+
+csc /out:E:\WorkArea\CodeBase\TeamTrainingAssignments\DayOneAssignment\MyApp.exe  E:\WorkArea\CodeBase\TeamTrainingAssignments\DayOneAssignment\MyApp.cs
+
+//Compiles MyApp.cs producing MyApp.dll:
+csc /target:library /out:E:\WorkArea\CodeBase\TeamTrainingAssignments\DayOneAssignment\MyApp.dll E:\WorkArea\CodeBase\TeamTrainingAssignments\DayOneAssignment\MyApp.cs
+
+//Excute cmd arguments
+MyApp.exe Sudarshan, Patil
+
+//The following command disassembles the file MyApp.exe and stores the resulting IL Assembler text in the file MyApp.il.
+ildasm E:\WorkArea\CodeBase\TeamTrainingAssignments\DayOneAssignment\MyApp.exe /output:E:\WorkArea\CodeBase\TeamTrainingAssignments\DayOneAssignment\MyApp.il
