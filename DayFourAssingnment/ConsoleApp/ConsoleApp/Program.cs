@@ -10,13 +10,13 @@ namespace ConsoleApp
 
             Console.WriteLine("Original Apple Price :{0}", apple.Total);
 
-            OrderLine discountedRate = apple.WithDiscount(.3f);
+            OrderLine discountedRate = apple.WithDiscount(.5f);
             OrderLine unitPriceRate = apple.WithUnitPrice(30m);
             OrderLine quantityRate = apple.WithQuantity(2);
 
             Console.WriteLine("Discounted Apple Price :{0}", discountedRate.Total);
-            Console.WriteLine("unitPriceRate Apple Price :{0}", unitPriceRate.Total);
-            Console.WriteLine("quantityRate Apple Price :{0}", quantityRate.Total);
+            Console.WriteLine("UnitPriceRate Apple Price :{0}", unitPriceRate.Total);
+            Console.WriteLine("QuantityRate Apple Price :{0}", quantityRate.Total);
 
             Console.ReadKey();
         }
