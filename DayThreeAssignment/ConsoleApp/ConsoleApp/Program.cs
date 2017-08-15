@@ -22,29 +22,29 @@ namespace ConsoleApp
             //A.Ability to add A key value
             //B.Update value by key
             //c.Delete value by using key
-            Dictionary<string, MyClass> myDictionary= new Dictionary<string, MyClass>();
+            Dictionary<MyClass, string> myDictionary= new Dictionary<MyClass, string>();
             
             MyClass myClass1 = new MyClass(5,10);
             MyClass myClass2 = new MyClass(5,15);
 
-            myDictionary.Add("One", myClass1);
-            myDictionary.Add("Two", myClass2);
+            myDictionary.Add(myClass1, "One");
+            myDictionary.Add(myClass2, "Two");
 
-            foreach (KeyValuePair<string, MyClass> kvp in myDictionary)
+            foreach (KeyValuePair<MyClass, string> kvp in myDictionary)
             {
                 Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
             }
 
             MyClass myClass3 = new MyClass(10, 15);
-            myDictionary["Two"] = myClass3;
+            myDictionary[myClass3] = "Three";
 
-            Console.WriteLine("Update value by key : Key = {0}, Value = {1}", "Two", myDictionary["Two"]);
+            Console.WriteLine("Update value by key : Key = {0}, Value = {1}", myClass3 , myDictionary[myClass3]);
 
             Console.WriteLine("Delete value by using key");
 
-            myDictionary.Remove("Two");
+            myDictionary.Remove(myClass2);
 
-            foreach (KeyValuePair<string, MyClass> kvp in myDictionary)
+            foreach (KeyValuePair<MyClass, string> kvp in myDictionary)
             {
                 Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
             }
