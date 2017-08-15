@@ -44,9 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Address.cs" />
-    <Compile Include="Person.cs" />
-    <Compile Include="PhoneNumber.cs" />
-    <Compile Include="PhoneNumberType.cs" />
+    <Compile Include="OrderLine.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

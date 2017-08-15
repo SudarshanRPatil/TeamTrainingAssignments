@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApp
 {
@@ -10,17 +6,19 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-          Person.Builder builder = new Person.Builder()
-          {
-              Name = "Sudrshan",
-              Address = new Address.Builder { City = "Dhule", Street = "Gondur Road, Dhule" }.Build()
-          };
-          
-          Person person = new Person(builder);
+            OrderLine apple = new OrderLine(quantity: 1, unitPrice: 20m, discount: 0.0f);
 
-          Console.WriteLine("Person Details Name : {0}, Address - City {1}, Street {2}", person.Name, person.Address.City, person.Address.Street);
+            Console.WriteLine("Original Apple Price :{0}", apple.Total);
 
-          Console.ReadKey();
+            OrderLine discountedRate = apple.WithDiscount(.3f);
+            OrderLine unitPriceRate = apple.WithUnitPrice(30m);
+            OrderLine quantityRate = apple.WithQuantity(2);
+
+            Console.WriteLine("Discounted Apple Price :{0}", discountedRate.Total);
+            Console.WriteLine("unitPriceRate Apple Price :{0}", unitPriceRate.Total);
+            Console.WriteLine("quantityRate Apple Price :{0}", quantityRate.Total);
+
+            Console.ReadKey();
         }
     }
 }
