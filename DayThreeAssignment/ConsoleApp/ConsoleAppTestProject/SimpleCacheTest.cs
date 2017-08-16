@@ -92,5 +92,27 @@ namespace ConsoleAppTestProject
             Assert.IsNotNull(simpleCache);
             Debug.WriteLine("Key = {0}, Value = {1}", "one", simpleCache.Retrive("one"));
         }
+
+
+        [TestMethod]
+        public void GenricRetriveTest()
+        {
+            Employee employee1 = new Employee
+            {
+                Age = 26,
+                Name = "XYZ"
+            };
+
+            SimpleCache simpleCache = new SimpleCache();
+            simpleCache.Add("one", employee1);
+
+            var emp = simpleCache.Retrive<Employee>("one");
+            Assert.IsNotNull(simpleCache);
+            Debug.WriteLine("Employee Name = {0}, Age = {1}", emp.Name, emp.Age);
+            Assert.AreEqual(26, emp.Age);
+            Assert.AreEqual("XYZ", emp.Name);
+            simpleCache.Clear("one");
+        }
+
     }
 }

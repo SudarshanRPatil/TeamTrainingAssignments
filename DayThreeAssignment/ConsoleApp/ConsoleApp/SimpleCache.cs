@@ -6,11 +6,11 @@ namespace ConsoleApp
 {
     public class SimpleCache
     {
-        private static readonly Dictionary<string, CacheItem> Cache = new Dictionary<string, CacheItem>();
+        private static readonly Dictionary<string, object> Cache = new Dictionary<string, object>();
 
         public void Add(string key, object value)
         {
-            Cache.Add(key, new CacheItem() { Value = value, Created = DateTime.Now.Ticks });
+            Cache.Add(key, value);
         }
 
         public object this[string key]
@@ -19,13 +19,9 @@ namespace ConsoleApp
             {
                 if (Cache.ContainsKey(key))
                 {
-                    if ((Cache[key].Created + 30000) > DateTime.Now.Ticks)
-                    {
-                        return Cache[key].Value;
-                    }
-                    Cache.Remove(key);
+                    return Cache[key];
                 }
-                return null;
+                throw new KeyNotFoundException("Invalid or key not found");
             }
         }
 
@@ -36,25 +32,29 @@ namespace ConsoleApp
 
         public void Update(string key, object value)
         {
-            CacheItem cacheItem = new CacheItem();
-            cacheItem.Value = value;
-            Cache[key] = cacheItem;
-        }
-
-        public class CacheItem
-        {
-            public object Value { get; set; }
-            public long Created { get; set; }
+            if (Cache.ContainsKey(key))
+            {
+                Cache[key] = value;
+            }
+            else
+            {
+                Cache.Add(key, value);
+            }
         }
 
         public object Retrive(string key)
         {
-            CacheItem cacheItem;
-            if (Cache.TryGetValue(key, out cacheItem) == false)
+            object value;
+            if (Cache.TryGetValue(key, out value) == false)
             {
                 return string.Format("Invalid or key not found: {0}", key); 
             }
-            return cacheItem.Value;
+            return value;
+        }
+
+        public T Retrive<T>(string key)
+        {
+            return (T) Retrive(key);
         }
     }
 }
